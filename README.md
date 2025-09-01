@@ -5,7 +5,6 @@
 This repository documents how to set up and run **FAST_LIO** with the **Livox MID360** LiDAR on **Ubuntu 20.04 + ROS Noetic**.  
 The setup involves installing the Livox SDK/driver, compiling FAST_LIO, configuring network settings, and running mapping.
 
----
 
 ## Prerequisites
 
@@ -14,7 +13,6 @@ The setup involves installing the Livox SDK/driver, compiling FAST_LIO, configur
   - `Lidar_driver` for Livox SDK/driver
   - `Fast_lio_ws` for FAST_LIO
 
----
 
 ## 1. Install Livox-SDK2 and Driver
 
@@ -51,25 +49,26 @@ The setup involves installing the Livox SDK/driver, compiling FAST_LIO, configur
 	source devel/setup.bash
 
 ### 2.1 code adjustment
-Inside /src/FAST_LIO, replace occurrences of livox_ros_driver with livox_ros_driver2 (~25 occurrences, use VSCode/global replace).
+Inside /src/FAST_LIO, replace occurrences of livox_ros_driver with livox_ros_driver2 (~25 occurrences, use VSCode/global replace). 
 
 ## 3. Network Host setting for lidar
 
 ### 3.1 Wired IPV4 setting 
-Address: 192.168.1.50
-Netmask: 255.255.255.0
-Gateway: 192.168.1.1
+	Address: 192.168.1.50 
+	Netmask: 255.255.255.0 
+	Gateway: 192.168.1.1 
 
-Turnoff Mwireless after connecting lidar wire.
+Turnoff Mwireless after connecting lidar wire. 
 
 ### 3.2 Launch file adjusting 
-In /catkin ... /livox_ros_driver2/ ... /launch
-change boradcasting (bd list) code of lidar: for lidar used for Iral:
-47MDM6E0020163
+In /catkin ... /livox_ros_driver2/ ... /launch 
+change boradcasting (bd list) code of lidar: for lidar used for Iral: 
+47MDM6E0020163 
 
 ### 3.3 Config file setting
-In /catkin ... /livox_ros_driver2/.../config/MID360_config.json:
-    "host_net_info" : {
+In /catkin ... /livox_ros_driver2/.../config/MID360_config.json: 
+
+	  "host_net_info" : {
       "cmd_data_ip" : "192.168.1.50",
       "cmd_data_port": 56101,
       "push_msg_ip": "192.168.1.50",
@@ -81,28 +80,28 @@ In /catkin ... /livox_ros_driver2/.../config/MID360_config.json:
       "log_data_ip" : "",
       "log_data_port": 56501
     }
-  },
-  "lidar_configs" : [
+  	},
+  	"lidar_configs" : [
     {
       "ip" : "192.168.1.163",
  
 ## 4. Node testing
 
 ## 4.1 Startup
-in folder Lidar_ws/src/catkin_livox_ros_driver2:
+in folder Lidar_ws/src/catkin_livox_ros_driver2: 
 
 	source devel/setup.bash
 	roslaunch livox_ros_driver2 msg_MID360.launch
  
-open another terminal:
-in folder fastlio
+open another terminal: 
+in folder /fastlio 
 
 	source devel/setup.bash
 	roslaunch fast_lio mapping_mid360.launch
 
 ## 4.2 view result
 
-in folder FAST_LIO/PCD:
+in folder FAST_LIO/PCD: 
 
 	sudo apt install pcl-tools
 	pcl_viewer scans.pcd
