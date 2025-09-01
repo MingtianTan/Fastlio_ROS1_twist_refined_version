@@ -1,24 +1,27 @@
 # Fastlio_ROS1_twist_refined_version
 
+##Deviate from origin work
 Modifying laserMapping.cpp
 
-#####################################
-#   UM-iRal Lab                     #
-#   Fast-lio Mapping                #
-#   Version 1.2 made by Teemty      #
-#   teemty@umich.edu                #
-#               8/27/2025           #
-#####################################
+##instruction on lidar driver (livox MID360)
+*************************************
+*  UM-iRal Lab                      *
+*   Fast-lio Mapping                *
+*   Version 1.2 made by Teemty      *
+*   teemty@umich.edu                *
+*   8_27_2025                       *
+*************************************
 
-####################
-# pull the repo   #
-#  for driver      #
-#                  #
-####################
+###Livox-SDK & ROS Driver
+********************
+* pull the repo    *
+*  for driver      *
+*                  *
+********************
 
-####
+****
 In Lidar_ws/src folder
-####
+****
 	git clone https://github.com/Livox-SDK/Livox-SDK2.git
 	cd ./Livox-SDK2/
 	mkdir build
